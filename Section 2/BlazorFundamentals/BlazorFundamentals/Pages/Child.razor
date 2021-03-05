@@ -1,0 +1,21 @@
+﻿<h3>Child Component</h3>
+
+<p>The sum of number is : @(num1 + num2)</p>
+
+<GrandChild></GrandChild>
+
+<button class="btn btn-primary" @onclick="ChildClick">Invoke parent component method</button>
+
+
+@code {
+
+    [CascadingParameter(Name = "FirstNumber")]
+    public int num1 { get; set; }
+
+    [CascadingParameter(Name = "SecondNumber")]
+    public int num2 { get; set; }
+
+    [Parameter]
+    public EventCallback ChildClick { get; set; }
+
+}

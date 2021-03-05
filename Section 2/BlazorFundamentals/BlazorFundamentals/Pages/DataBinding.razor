@@ -1,0 +1,27 @@
+﻿@page "/databinding"
+@inherits DataBindingModel
+
+<h1>Data Binding example</h1>
+<hr />
+
+<h3>One way data binding</h3>
+<p>@SampleText</p>
+
+<hr />
+
+<h3>Two way data binding</h3>
+<div>
+    <span>Enter your Name: </span>
+    <input type="text" @bind="Name" @bind:event="oninput" />
+</div>
+
+<br />
+<p>You name is: @Name</p>
+
+<hr />
+
+<h3>Formatted string</h3>
+<div>
+    <span>The Sample date is:</span>
+    <input @bind="SampleDate" @bind:format="dd-MM-yyyy" />
+</div>

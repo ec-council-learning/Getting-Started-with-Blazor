@@ -1,0 +1,22 @@
+﻿@page "/route1"
+@page "/home/route1"
+
+@inherits RoutingModel
+
+<h1>Routing Example</h1>
+<hr />
+
+<h4>The current Route of the component is @CurrentRoute</h4>
+
+@for (int i = 1; i < 4; i++)
+{
+    int buttonNumber = i;
+
+    <p>
+        <button class="btn btn-info" @onclick="(() =>NavigateAway(buttonNumber))">Navigate away</button>
+    </p>
+}
+
+<hr />
+
+<a href="/querystring?NavigationFrom=@CurrentRoute">Navigate With QueryString</a>

@@ -1,0 +1,10 @@
+﻿@page "/routingdemo/{routeparam:int}"
+
+@inherits RouteparameterModel
+
+<h1>Routeparameter Example</h1>
+<hr />
+
+<h4>The current route paramter for the component is @RouteParam</h4>
+
+<button class="btn btn-link" @onclick="NavigateBack">Go back</button>

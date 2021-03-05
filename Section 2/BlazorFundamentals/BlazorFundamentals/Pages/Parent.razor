@@ -1,0 +1,23 @@
+﻿@page "/parent"
+
+<h3>Parent Component</h3>
+
+@*<Child num1="5" num2="10"></Child>*@
+
+<CascadingValue Value="10" Name="FirstNumber">
+    <CascadingValue Value="5" Name="SecondNumber">
+        <Child ChildClick="ChildClickHandler"></Child>
+    </CascadingValue>
+</CascadingValue>
+
+<br />
+<p><strong>@message</strong></p>
+
+@code {
+    string message { get; set; }
+
+    void ChildClickHandler()
+    {
+        message = "Child event has occurred";
+    }
+}

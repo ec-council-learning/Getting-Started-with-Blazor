@@ -1,0 +1,34 @@
+﻿@page "/eventhandeling"
+@inherits EventHandlingModel
+
+<h1>Event Handling example</h1>
+<hr />
+
+<div>
+    <button class="btn btn-primary" @onclick="ButtonClicked">
+        Click me
+    </button>
+</div>
+<hr />
+
+<h3>Using event parameter</h3>
+<select class="form-control col-md-4" @onchange="SelectGender">
+    <option value="">-- Select Gender --</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+</select>
+
+<p><strong>Selected Gender</strong> : @Gender </p>
+
+<hr />
+
+<h3>Using lambda expressions</h3>
+
+@for (int i = 1; i < 4; i++)
+{
+    int textboxNumber = i;
+
+    <p>
+        <input @onfocus="@(() => FocusTextbox(textboxNumber))" />
+    </p>
+}

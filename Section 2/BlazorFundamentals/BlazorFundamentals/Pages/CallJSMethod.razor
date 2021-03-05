@@ -1,0 +1,23 @@
+﻿@page "/calljsmethod"
+@inherits CallJSMethodModel
+
+<h1>CallJSMethod example</h1>
+<hr />
+
+<button class="btn btn-primary" @onclick="GetSumOfArray">Get Array Sum</button>
+<p>The sum of array elements is : @sumOfArray</p>
+
+<hr />
+
+<button class="btn btn-warning" @onclick="ShowAlert">Show Alert</button>
+<button class="btn btn-info" @onclick="ShowArrayItems">Show Array</button>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-3">
+        <input type="text" @ref="name" class="form-control" placeholder="Enter your name" />
+    </div>
+    <button class="btn btn-primary" @onclick="ShowName">Show Name</button>
+</div>
+

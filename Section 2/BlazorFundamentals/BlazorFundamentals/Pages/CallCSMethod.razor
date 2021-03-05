@@ -1,0 +1,20 @@
+﻿@page "/callcsmethod"
+
+@inherits CallCSMethodModel
+
+<h1>Invoke C# Method example</h1>
+<hr />
+
+<button class="btn btn-primary" @onclick="InvokeJSMethod">
+    Invoke static .NET method
+</button>
+<hr />
+
+<button class="btn btn-info"
+        @onclick="@(()=>InvokeDisplayMessageCallerJS("The Button is clicked"))">
+    Call JS Method
+</button>
+
+<br />
+<p>@message</p>
+

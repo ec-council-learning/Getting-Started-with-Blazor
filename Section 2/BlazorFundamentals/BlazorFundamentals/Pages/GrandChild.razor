@@ -1,0 +1,11 @@
+﻿<h3>Grand Child Component</h3>
+
+<p>The product of number is : @(num1 * num2)</p>
+
+@code {
+    [CascadingParameter(Name = "FirstNumber")]
+    public int num1 { get; set; }
+
+    [CascadingParameter(Name = "SecondNumber")]
+    public int num2 { get; set; }
+}
