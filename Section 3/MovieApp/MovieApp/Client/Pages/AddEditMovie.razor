@@ -1,0 +1,91 @@
+﻿@page "/admin/movies/new"
+@page "/admin/movies/edit/{MovieID:int}"
+@inherits AddEditMovieModel
+
+@using MovieApp.Shared.Models;
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize(Policy = UserRoles.Admin)]
+
+<div class="row justify-content-center">
+    <div class="col">
+
+        <h1 class="display-4">@Title Movie</h1>
+        <hr />
+
+        <EditForm Model="@movie" OnValidSubmit="SaveMovie">
+            <DataAnnotationsValidator />
+            <div class="row justify-content-between">
+                <div class="col-md-8">
+                    <div class="form-group row">
+                        <label class="control-label col-md-12">Title</label>
+                        <div class="col-md-8">
+                            <InputText class="form-control" @bind-Value="movie.Title" />
+                            <ValidationMessage For="@(() => movie.Title)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-12">Genre</label>
+                        <div class="col-md-8">
+                            <InputSelect class="form-control" @bind-Value="movie.Genre">
+                                <option value="-- Select City --">-- Select Genre --</option>
+                                @foreach (var genre in lstGenre)
+                                {
+                                    <option value="@genre.GenreName">@genre.GenreName</option>
+                                }
+                            </InputSelect>
+                            <ValidationMessage For="@(() => movie.Genre)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-12">Language</label>
+                        <div class="col-md-8">
+                            <InputText class="form-control" @bind-Value="movie.Language" />
+                            <ValidationMessage For="@(() => movie.Language)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-12">Duration</label>
+                        <div class="col-md-8">
+                            <InputNumber class="form-control" @bind-Value="movie.Duration" />
+                            <ValidationMessage For="@(() => movie.Duration)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-12">Rating</label>
+                        <div class="col-md-8">
+                            <InputNumber class="form-control" @bind-Value="movie.Rating" />
+                            <ValidationMessage For="@(() => movie.Rating)" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-12">Overview</label>
+                        <div class="col-md-8">
+                            <InputTextArea class="form-control" @bind-Value="movie.Overview" />
+                            <ValidationMessage For="@(() => movie.Overview)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group row">
+                        <div class="image-container">
+                            <img class="preview-image" src=@imagePreview>
+                        </div>
+                        <InputFile OnChange="ViewImage"></InputFile>
+                        <p>@status</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-info">Save</button>
+                <button class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+

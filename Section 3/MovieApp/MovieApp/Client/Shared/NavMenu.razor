@@ -1,0 +1,30 @@
+﻿@inherits NavMenuModel
+@using MovieApp.Shared.Models
+
+<nav class="top-row pl-4 navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="/">Movie App</a>
+    <span class="spacer"></span>
+    <AuthorizeView Policy="@UserRoles.Admin">
+        <Authorized>
+            <a class="btn nav-bar-button" href="admin/movies">Admin Panel</a>
+        </Authorized>
+    </AuthorizeView>
+    <AuthorizeView>
+        <Authorized>
+            <a class="btn nav-bar-button" href="watchlist">Watchlist</a>
+            <div class="dropdown">
+                <a class="btn nav-bar-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" @onclick="e => show=!show">
+                    @context.User.Identity.Name
+                </a>
+                <div class="dropdown-menu-right dropdown-menu @(show? "show" :"")"
+                     aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" @onclick="LogoutUser">Logout</a>
+                </div>
+            </div>
+        </Authorized>
+        <NotAuthorized>
+            <a class="btn nav-bar-button" href="login">Login</a>
+        </NotAuthorized>
+    </AuthorizeView>
+</nav>

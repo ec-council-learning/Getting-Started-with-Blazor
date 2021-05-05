@@ -1,0 +1,24 @@
+﻿@page "/"
+@page "/category/{GenreName}"
+@inherits HomeModel
+
+<div class="row">
+    <div class="col-md-3 col-sm-12">
+        <MovieFilter SelectedGenre="@GenreName"></MovieFilter>
+    </div>
+    <div class="col mb-3">
+        @if (lstMovie.Count == 0)
+        {
+            <p>No data to display</p>
+        }
+        else
+        {
+            <div class="d-flex flex-wrap">
+                @foreach (var movie in lstMovie)
+                {
+                    <MovieCard Movie="movie"></MovieCard>
+                }
+            </div>
+        }
+    </div>
+</div>
